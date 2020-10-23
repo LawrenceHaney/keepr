@@ -6,9 +6,11 @@
 --   PRIMARY KEY(email)
 -- )
 
+
 -- CREATE TABLE Keeps(
 --   id int AUTO_INCREMENT,
 --   creatorId VARCHAR(225) NOT NULL,
+--   creatorEmail VARCHAR(225) NOT NULL,
 --   name VARCHAR(225) NOT NULL,
 --   img VARCHAR(225) NOT NULL,
 --   views INT,
