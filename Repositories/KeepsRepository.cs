@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -44,6 +45,7 @@ namespace Keepr.Repositories
     }
 
     //SQL call that returns a keep by id and populates the creator profile
+    //TODO adress if the fuction  is needed for scope
     internal Keep GetById(int id)
     {
       string sql = populateCreator + "WHERE keep.id = @id";
@@ -53,9 +55,11 @@ namespace Keepr.Repositories
         splitOn: "id").FirstOrDefault();
     }
 
-    internal void DeleteKeep(int id)
+    //SQL call to remove a keep from the keep table
+    //TODO adress if cascade delete needs to hit the VAULTKEEP object
+        internal void DeleteKeep(int id)
     {
-      string sql = "DELETE FROM Keeps WHERE id = @id"
+      string sql = "DELETE FROM Keeps WHERE id = @id";
       _db.Execute(sql, new {id});
     }
   }
