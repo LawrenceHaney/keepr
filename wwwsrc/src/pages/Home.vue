@@ -7,5 +7,8 @@
 <script>
 export default {
   name: "home",
+  mounted(){
+    this.$store.dispatch("getKeeps")
+  }
 };
 </script>
