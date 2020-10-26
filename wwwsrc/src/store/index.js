@@ -9,6 +9,7 @@ export default new Vuex.Store({
     profile: {},
     keeps: [],
     focus: {},
+    vaults: [],
   },
   mutations: {
     setProfile(state, profile) {
@@ -51,13 +52,21 @@ export default new Vuex.Store({
       },
       async createKeep({commit, state}, newKeep){
         try {
-          console.log(newKeep);
           let res = await api.post("keeps", newKeep)
-          console.log(res) 
+          commit("setKeeps", [...state.keeps, res.data]) 
         } catch (error) {
           console.error(error)
         }
-      }
+      },
+      
+      async createVault({commit, state}, newVault){
+        try {
+          let res = await api.post("vaults", newVault)
+          commit("setVaults", [...state.vaults, res.data])
+        } catch (error) {
+          console.error(error)
+        }
+      },
     }
   }
 );

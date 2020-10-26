@@ -18,3 +18,12 @@
 --   keeps INT,
 --   PRIMARY KEY (id)
 -- )
+
+-- CREATE TABLE Vaults(
+--   id int AUTO_INCREMENT,
+--   creatorId VARCHAR(225) NOT NULL,
+--   name VARCHAR(225) NOT NULL,
+--   description VARCHAR(225),
+--   IsPrivate TINYINT,
+--   PRIMARY KEY (id)
+-- )

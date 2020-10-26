@@ -5,6 +5,11 @@
         <h1 class="border border-primary">K</h1>
       </div>
     </router-link>
+    <router-link v-if="$auth.isAuthenticated" class="navbar-brand d-flex" :to="{ name: 'Profile', params:{id: this.$store.state.profile.id} }">
+      <div class="d-flex flex-column align-items-center">
+        <h1 class="">Profile</h1>
+      </div>
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
