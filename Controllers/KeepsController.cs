@@ -53,7 +53,7 @@ namespace Keepr.Controllers
 
     //on api "/keeps" post takes in a keep to add to the SQL database
     [HttpPost]
-    [Authorize]
+    // [Authorize]
     public async Task<ActionResult<Keep>> Create([FromBody] Keep newKeep)
     {
       try
@@ -61,6 +61,9 @@ namespace Keepr.Controllers
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         newKeep.CreatorId = userInfo.Id;
         newKeep.Creator = userInfo;
+        newKeep.Views = 0;
+        newKeep.Shares = 0;
+        newKeep.Keeps = 0;
         return Ok(_serv.Create(newKeep));
       }
       catch (Exception e)

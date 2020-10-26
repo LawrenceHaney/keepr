@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     createKeep(){
-      this.$store.dispatch("createKeep")
+      this.$store.dispatch("createKeep", this.newKeep)
     }
   }
 

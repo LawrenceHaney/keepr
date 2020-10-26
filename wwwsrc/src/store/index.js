@@ -34,6 +34,7 @@ export default new Vuex.Store({
       },
       async createKeep({commit, state}, newKeep){
         try {
+          console.log(newKeep);
           let res = await api.post("keeps", newKeep)
           console.log(res) 
         } catch (error) {
