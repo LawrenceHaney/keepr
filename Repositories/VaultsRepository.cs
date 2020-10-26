@@ -10,7 +10,6 @@ namespace Keepr.Repositories
     {
       //defines db
       private readonly IDbConnection _db;
-      
       //ofuscates db
       public VaultsRepository(IDbConnection db)
       {
