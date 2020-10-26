@@ -53,7 +53,7 @@ namespace Keepr.Controllers
 
     //on api "/keeps" post takes in a keep to add to the SQL database
     [HttpPost]
-    // [Authorize]
+    [Authorize]
     public async Task<ActionResult<Keep>> Create([FromBody] Keep newKeep)
     {
       try

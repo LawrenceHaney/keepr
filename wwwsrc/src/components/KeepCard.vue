@@ -1,5 +1,5 @@
 <template>
-  <div @click="this.openModal" class="card">
+  <div @click="this.openModal" class="card col">
     <span v-if="keepData.img">
     <img class="card-img" :src="keepData.img">
     <div class="card-img-overlay row">
