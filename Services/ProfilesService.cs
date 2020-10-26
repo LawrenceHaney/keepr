@@ -19,5 +19,9 @@ namespace Keepr.Services
       }
       return profile;
     }
+    internal Profile GetById(string id)
+    {
+      return _repo.GetById(id);
+    }
   }
 }

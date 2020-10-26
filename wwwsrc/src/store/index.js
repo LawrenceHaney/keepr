@@ -8,10 +8,14 @@ export default new Vuex.Store({
   state: {
     profile: {},
     keeps: [],
+    focus: {},
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setFocus(state, payload){
+      state.focus = payload
     },
     setKeeps(state, keeps){
       state.keeps = keeps
@@ -24,6 +28,14 @@ export default new Vuex.Store({
         commit("setProfile", res.data);
       } catch (error) {
         console.error(error);
+      }
+    },
+    async getProfileById({commit}, id){
+      try {
+        let res = await api.get("profiles/"+ id)
+        commit("setFocus", res.data)
+      } catch (error) {
+        
       }
     },
     async getKeeps({commit}) {

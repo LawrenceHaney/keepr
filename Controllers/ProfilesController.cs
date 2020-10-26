@@ -34,5 +34,20 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+        // gets user profiles by id to populate user pages
+    [HttpGet("{id}")]
+    public ActionResult<Profile> GetProfile(string id)
+    {
+      
+      try
+      {
+        return Ok(_ps.GetById(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    
+    }
   }
 }
