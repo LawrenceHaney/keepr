@@ -1,3 +1,3 @@
 export const domain = "dev-lhaney.us.auth0.com";
 export const clientId = "y5yt5MtZ7bnhmwl3PGIbrapeRupt0eyG";
-export const Audience = "https://keepr"
+export const audience = "https://keepr"

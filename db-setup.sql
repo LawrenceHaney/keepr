@@ -10,9 +10,9 @@
 -- CREATE TABLE Keeps(
 --   id int AUTO_INCREMENT,
 --   creatorId VARCHAR(225) NOT NULL,
---   creatorEmail VARCHAR(225) NOT NULL,
 --   name VARCHAR(225) NOT NULL,
---   img VARCHAR(225) NOT NULL,
+--   description VARCHAR(225),
+--   img VARCHAR(225),
 --   views INT,
 --   shares INT,
 --   keeps INT,

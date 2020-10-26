@@ -21,7 +21,7 @@ namespace Keepr.Repositories
     keep.*,
     profile.*
     FROM keeps keep
-    JOIN profiles profile on keep.creatorEmail = profile.email
+    JOIN profiles profile on keep.creatorId = profile.id
     ";
     //SQL call to create new table item
     internal int Create(Keep newKeep)

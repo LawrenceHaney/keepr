@@ -13,6 +13,9 @@ export default new Vuex.Store({
     setProfile(state, profile) {
       state.profile = profile;
     },
+    setKeeps(state, keeps){
+      state.keeps = keeps
+    }
   },
   actions: {
     async getProfile({ commit }) {
@@ -26,7 +29,9 @@ export default new Vuex.Store({
     async getKeeps({commit}) {
         try {
           let res = await api.get("keeps");
-          console.log(res)
+          console.log(res);
+          commit("setKeeps", res.data)
+          console.log(this.state.keeps);
         } 
         catch (error) {
           console.error(error)
