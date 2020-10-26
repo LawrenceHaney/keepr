@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using Keepr.Models;
@@ -9,23 +8,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
 {
-  //defines controller as an api entry point and the route for the api
+//defines controller as an api entry point and the route for the api
   [ApiController]
   [Route("api/[controller]")]
 
-  //instantiates the controller as an extension of the base controller
-  public class KeepsController : ControllerBase
+//instantiates the controller as an extension of the base controller
+  public class VaultsController : ControllerBase
   {
-    //creates a readonly service that can accept commands from the controller
-    private readonly KeepsService _serv;
+//creates a readonly service that can accept commands from the controller
+    private readonly VaultsService _serv;
 
-    public KeepsController(KeepsService serv)
+    public VaultsController(VaultsService serv)
     {
       _serv=serv;
     }
-    //on api "/keeps" get get all keeps
+//on api "/vaults" get get all vaults
     [HttpGet]
-    public ActionResult<Keep> Get()
+    public ActionResult<Vault> Get()
     {
       try
       {
@@ -37,9 +36,9 @@ namespace Keepr.Controllers
       }
     }
 
-    //on api "/keeps/:id" get keep with keep.id
+//on api "vaults/:id" get vault with vault.id
     [HttpGet("{id}")]
-    public ActionResult<Keep> Get(int id)
+    public ActionResult<Vault> Get(int id)
     {
       try
       {
@@ -51,17 +50,17 @@ namespace Keepr.Controllers
       }
     }
 
-    //on api "/keeps" post takes in a keep to add to the SQL database
+//on api "/vaults" post takes in a vault to add to the SQL database
     [HttpPost]
     [Authorize]
-    public async Task<ActionResult<Keep>> Create([FromBody] Keep newKeep)
+    public async Task<ActionResult<Vault>> Create([FromBody] Vault newVault)
     {
       try
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-        newKeep.CreatorId = userInfo.Id;
-        newKeep.Creator = userInfo;
-        return Ok(_serv.Create(newKeep));
+        newVault.CreatorId = userInfo.Id;
+        newVault.Creator = userInfo;
+        return Ok(_serv.Create(newVault));
       }
       catch (Exception e)
       {
@@ -69,11 +68,11 @@ namespace Keepr.Controllers
       }
     }
 
-    //on api "/keeps" delete takes in an id to be deleted
+//on api "/vaults" delete takes in an id to be deleted
     [HttpDelete("{id}")]
     [Authorize]
 
-    public async Task<ActionResult<Keep>> Delete(int id)
+    public async Task<ActionResult<Vault>> Delete(int id)
     {
       try
       {
