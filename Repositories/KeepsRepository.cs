@@ -27,7 +27,7 @@ namespace Keepr.Repositories
     internal int Create(Keep newKeep)
     {
       string sql =@"
-      INSERT INTO Keeps
+      INSERT INTO keeps
       (creatorId, name, description, img)
       VALUES
       (@CreatorId, @Name, @Description, @Img);
@@ -45,7 +45,6 @@ namespace Keepr.Repositories
     }
 
     //SQL call that returns a keep by id and populates the creator profile
-    //TODO adress if the fuction  is needed for scope
     internal Keep GetById(int id)
     {
       string sql = populateCreator + "WHERE keep.id = @id";
