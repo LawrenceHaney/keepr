@@ -27,3 +27,11 @@
 --   IsPrivate TINYINT,
 --   PRIMARY KEY (id)
 -- )
+
+-- CREATE TABLE VaultKeeps(
+--   id int AUTO_INCREMENT,
+--   creatorId VARCHAR(225) NOT NULL,
+--   VaultId VARCHAR(225) NOT NULL,
+--   KeepId VARCHAR(225),
+--   PRIMARY KEY (id)
+-- )
