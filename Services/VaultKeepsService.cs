@@ -38,6 +38,6 @@ namespace Keepr.Services
       _repo.DeleteVaultKeep(id);
       return "deleted";
     }
-    }
+    
   }
 }
