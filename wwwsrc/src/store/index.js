@@ -61,6 +61,24 @@ export default new Vuex.Store({
           console.error(error)
         }
       },
+
+      async addToVault({commit, state}, newVaultKeep){
+        try {
+          let res = await api.post("vaultkeeps", newVaultKeep)
+        } catch (error) {
+          console.error(error)
+        }
+      },
+
+      async getKeepsbyVaultId({commit, state}, id){
+        try {
+          let res = await api.get("vaultkeeps/" +id+ "/keeps")
+          commit("setKeeps", res.data)
+        } catch (error) {
+          console.error(error)
+        }
+      },
+
       
       async createVault({commit, state}, newVault){
         try {
@@ -74,7 +92,7 @@ export default new Vuex.Store({
       async getVaultsByUser({commit, state}, userId){
         try {
             let res = await api.get("vaults/"+ userId +"/user")
-            commit("setVaults", res.data);
+            commit("setVaults", [...res.data]);
         } catch (error) {
           console.error(error)
         }

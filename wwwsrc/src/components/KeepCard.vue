@@ -57,6 +57,11 @@
 export default {
   name:"keepCard",
   props:["keepData"],
+  data(){
+    return{
+      newVaultKeep: {}
+    }
+  },
   computed:{
     vaults(){
       return this.$store.state.vaults
@@ -68,7 +73,9 @@ export default {
       $(`#${this.keepData.id}`).modal()
     },
     addToVault(id){
-      console.log(id);
+      this.newVaultKeep.keepId = this.keepData.id
+      this.newVaultKeep.vaultId = id
+      this.$store.dispatch("addToVault", this.newVaultKeep)
     }
   }
 

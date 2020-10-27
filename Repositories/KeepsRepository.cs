@@ -59,7 +59,7 @@ namespace Keepr.Repositories
     {
       string sql =@"
       SELECT k.*, vk.id AS VaultKeepId
-      FROM vaultkeep vk
+      FROM vaultkeeps vk
       JOIN keeps k ON k.id = vk.keepId
       WHERE vaultId = @id
       ";
