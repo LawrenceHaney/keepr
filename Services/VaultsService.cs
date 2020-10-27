@@ -38,7 +38,7 @@ namespace Keepr.Services
       return res;
     }
 
-    internal IEnumerable<Vault> GetByUser(int id, Profile userInfo)
+    internal IEnumerable<Vault> GetByUser(string id, Profile userInfo)
     {
       var res = _repo.GetByUser(id);
       if (res == null)

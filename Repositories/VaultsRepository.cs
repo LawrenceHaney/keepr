@@ -21,7 +21,7 @@ namespace Keepr.Repositories
     vault.*,
     profile.*
     FROM vaults vault
-    JOIN profiles profile on vault.creatorEmail = profile.email
+    JOIN profiles profile on vault.creatorId = profile.Id
     ";
 
     //SQL call to create new Vault
@@ -55,9 +55,9 @@ namespace Keepr.Repositories
         splitOn: "id").FirstOrDefault();
     }
     //SQL call to get user Vaults
-    internal IEnumerable<Vault> GetByUser(int id)
+    internal IEnumerable<Vault> GetByUser(string id)
     {
-      string sql = populateCreator + "Where CreatorId = @id";
+      string sql =  populateCreator + "WHERE vault.CreatorId = @id";
       return _db.Query<Vault, Profile, Vault>(
         sql, (vault, profile)=> 
         {vault.Creator = profile; return vault;}, 

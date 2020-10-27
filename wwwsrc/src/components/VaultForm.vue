@@ -7,6 +7,8 @@
       <label for="Description">Description</label>
       <input type="text" name="" id="" v-model="newVault.description" class="form-control" placeholder="" aria-describedby="helpId">
       <small id="helpId" class="text-muted"></small>
+      <label for="Privacy">Private?</label>
+      <input type="checkbox" v-model="newVault.IsPrivate" aria-label="Checkbox for following text input">
       <button type="submit" class="btn btn-outline-primary">GO!</button>
     </form>
   </div>

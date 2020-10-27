@@ -52,14 +52,14 @@ namespace Keepr.Controllers
     }
 
 // on api "/vaults/:userId/user" gets all vaults created by user and returns private vaults only if userid matches creator id
-    [HttpGet("{id}/user")]
+    [HttpGet("{userid}/user")]
 
-    public async Task<ActionResult<IEnumerable<Vault>>> GetByUser(int id)
+    public async Task<ActionResult<IEnumerable<Vault>>> GetByUser(string userid)
     {
       try
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-        return Ok(_serv.GetByUser(id, userInfo));
+        return Ok(_serv.GetByUser(userid, userInfo));
       }
       catch (Exception e)
       {
