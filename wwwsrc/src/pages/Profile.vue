@@ -2,11 +2,13 @@
   <div class="container-fluid">
     <h1>Welcome: {{profile.name}}</h1>
     <new-vault-form/>
+    <vault-card v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
   </div>
 </template>
 
 <script>
 import newVaultForm from "../components/VaultForm.vue"
+import VaultCard from "../components/VaultCard.vue"
 export default {
 name:"Profile",
 mounted(){
@@ -17,12 +19,13 @@ computed:{
   profile(){
     return this.$store.state.focus
   },
-  Vaults(){
+  vaults(){
     return this.$store.state.vaults
   }
 },
 components:{
-    newVaultForm
+    newVaultForm,
+    VaultCard
 }
 }
 </script>

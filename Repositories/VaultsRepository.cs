@@ -51,16 +51,16 @@ namespace Keepr.Repositories
       string sql = populateCreator + "WHERE vault.id = @id";
       return _db.Query<Vault, Profile, Vault>(
         sql, (vault, profile)=> 
-        {vault.Creator = profile; return vault;}, 
+        {vault.Creator = profile; return vault;}, new {id},
         splitOn: "id").FirstOrDefault();
     }
     //SQL call to get user Vaults
     internal IEnumerable<Vault> GetByUser(string CreatorId)
     {
-      string sql =  populateCreator + "WHERE vault.creatorId = @CreatorId";
+      string sql =  populateCreator + "WHERE creatorId = @CreatorId";
       return _db.Query<Vault, Profile, Vault>(
         sql, (vault, profile)=> 
-        {vault.Creator = profile; return vault;}, 
+        {vault.Creator = profile; return vault;}, new {CreatorId}, 
         splitOn: "id");
       
     }
