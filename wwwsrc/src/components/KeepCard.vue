@@ -64,6 +64,7 @@ export default {
   },
   methods:{
     openModal(){
+      this.$store.dispatch("getVaultsByUser", this.$auth.userInfo.id)
       $(`#${this.keepData.id}`).modal()
     },
     addToVault(id){
