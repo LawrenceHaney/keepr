@@ -26,6 +26,17 @@ namespace Keepr.Repositories
       return _db.ExecuteScalar<int>(sql, newVaultKeep);
     }
 
+    internal VaultKeep GetById(int id)
+    {
+      string sql = @"
+      SELECT
+      vaultkeep.*,
+      From vaultkeeps vaultkeep
+      WHERE vaultkeep.id = @id
+      ";
+      return _db.QueryFirstOrDefault<VaultKeep>(sql, new {id});
+    }
+
     internal void DeleteVaultKeep(int id)
     {
       string sql = "DELETE FROM vaultkeeps WHERE id = @id";
