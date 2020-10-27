@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Keepr.Models;
 using Keepr.Repositories;
 
@@ -35,6 +36,16 @@ namespace Keepr.Services
         throw new System.Exception("Bad id, please check your input and try again");
       }
       return res;
+    }
+
+    internal IEnumerable<Vault> GetByUser(int id, Profile userInfo)
+    {
+      var res = _repo.GetByUser(id);
+      if (res == null)
+      {
+        throw new System.Exception("Bad id, please check your input and try again");
+      }
+      return res.ToList().FindAll(Vault => Vault.CreatorId == userInfo.Id || !Vault.IsPrivate);
     }
 //Passes an id to the repository to delete
     internal string Delete(int id, string userId)

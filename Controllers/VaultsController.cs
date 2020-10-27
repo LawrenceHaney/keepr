@@ -50,6 +50,22 @@ namespace Keepr.Controllers
       }
     }
 
+// on api "/vaults/:userId/user" gets all vaults created by user and returns private vaults only if userid matches creator id
+    [HttpGet("{id}/user")]
+
+    public async ActionResult<Vault> GetByUser(int id)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_serv.GetByUser(id, userInfo));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
 //on api "/vaults" post takes in a vault to add to the SQL database
     [HttpPost]
     [Authorize]

@@ -54,6 +54,16 @@ namespace Keepr.Repositories
         {vault.Creator = profile; return vault;}, 
         splitOn: "id").FirstOrDefault();
     }
+    //SQL call to get user Vaults
+    internal IEnumerable<Vault> GetByUser(int id)
+    {
+      string sql = populateCreator + "Where CreatorId = @id";
+      return _db.Query<Vault, Profile, Vault>(
+        sql, (vault, profile)=> 
+        {vault.Creator = profile; return vault;}, 
+        splitOn: "id");
+      
+    }
 
     //SQL call to remove a vault from the vault table
     //TODO adress if cascade delete needs to hit the VAULTKEEP object
