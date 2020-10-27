@@ -11,6 +11,7 @@ export default {
 name:"Profile",
 mounted(){
   this.$store.dispatch("getProfileById", this.$route.params.id)
+  this.$store.dispatch("getVaultsByUser", this.$route.params.id)
 },
 computed:{
   profile(){

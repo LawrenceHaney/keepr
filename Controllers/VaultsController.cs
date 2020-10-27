@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using Keepr.Models;
@@ -53,7 +54,7 @@ namespace Keepr.Controllers
 // on api "/vaults/:userId/user" gets all vaults created by user and returns private vaults only if userid matches creator id
     [HttpGet("{id}/user")]
 
-    public async ActionResult<Vault> GetByUser(int id)
+    public async Task<ActionResult<IEnumerable<Vault>>> GetByUser(int id)
     {
       try
       {

@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     setKeeps(state, keeps){
       state.keeps = keeps
+    },
+    setVaults(state, vaults){
+      state.vaults = vaults
     }
   },
   actions: {
@@ -67,6 +70,15 @@ export default new Vuex.Store({
           console.error(error)
         }
       },
+
+      async getVaultsByUser({commit, state}, userId){
+        try {
+            let res = await api.get("vaults/"+ userId +"/user")
+            console.log(res.data);
+        } catch (error) {
+          console.error(error)
+        }
+      }
     }
   }
 );
