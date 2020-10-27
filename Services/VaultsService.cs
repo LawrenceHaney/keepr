@@ -37,7 +37,7 @@ namespace Keepr.Services
       }
       return res;
     }
-
+    //TODO un comment .tolist
     internal IEnumerable<Vault> GetByUser(string id, Profile userInfo)
     {
       var res = _repo.GetByUser(id);
@@ -45,7 +45,8 @@ namespace Keepr.Services
       {
         throw new System.Exception("Bad id, please check your input and try again");
       }
-      return res.ToList().FindAll(Vault => Vault.CreatorId == userInfo.Id || !Vault.IsPrivate);
+      return res;
+      // .ToList().FindAll(Vault => Vault.CreatorId == userInfo.Id || !Vault.IsPrivate);
     }
 //Passes an id to the repository to delete
     internal string Delete(int id, string userId)
