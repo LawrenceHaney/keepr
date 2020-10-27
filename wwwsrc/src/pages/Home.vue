@@ -24,6 +24,7 @@ export default {
   },
   mounted(){
     this.$store.dispatch("getKeeps")
+    this.$store.dispatch("getVaultsByUser", this.$auth.userInfo.id)
   },
   components:{
     newKeepForm,

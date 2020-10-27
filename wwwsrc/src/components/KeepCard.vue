@@ -36,6 +36,16 @@
       <div class="modal-footer">
         <p>{{keepData.description}}</p>
       </div>
+      <div class="modal-footer">
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Add to Vault
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a v-for="vault in vaults" :key="vault.id" class="dropdown-item" @click.prevent="addToVault(vault.id)" >{{vault.name}}</a>
+  </div>
+</div>
+      </div>
     </div>
   </div>
 </div>
@@ -47,9 +57,17 @@
 export default {
   name:"keepCard",
   props:["keepData"],
+  computed:{
+    vaults(){
+      return this.$store.state.vaults
+    }
+  },
   methods:{
     openModal(){
       $(`#${this.keepData.id}`).modal()
+    },
+    addToVault(id){
+      console.log(id);
     }
   }
 
