@@ -25,7 +25,7 @@ namespace Keepr.Services
     {
       return _repo.GetAll();
     }
-
+    //passses an id to repo to return a single keep
     internal Keep GetById(int id)
     {
       var res = _repo.GetById(id);
@@ -35,7 +35,12 @@ namespace Keepr.Services
       }
       return res;
     }
-
+    //Passes an id to get a collection of keeps
+    internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+    {
+      return _repo.GetKeepsByVaultId(id);
+    }
+    
     //Passes an id to the repository to delete
     internal string Delete(int id, string userId)
     {

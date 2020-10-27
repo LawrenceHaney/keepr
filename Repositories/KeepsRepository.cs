@@ -54,6 +54,17 @@ namespace Keepr.Repositories
         splitOn: "id").FirstOrDefault();
     }
 
+    //SQL call that gets all keeps in a vault
+    internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
+    {
+      string sql =@"
+      SELECT k.*, vk.id AS VaultKeepId
+      FROM vaultkeep vk
+      JOIN keeps k ON k.id = vk.keepId
+      WHERE vaultId = @id
+      ";
+      return _db.Query<VaultKeepViewModel>(sql, new {id});
+    }
     //SQL call to remove a keep from the keep table
     //TODO adress if cascade delete needs to hit the VAULTKEEP object
         internal void DeleteKeep(int id)
