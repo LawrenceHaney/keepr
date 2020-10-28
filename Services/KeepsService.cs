@@ -63,6 +63,11 @@ namespace Keepr.Services
       payload.Views = payload.Views != 0 && payload.Views < data.Views ? payload.Views : data.Views;
       return _repo.Edit(payload);
     }
+
+    internal IEnumerable<Keep> View(int id)
+    {
+      return _repo.View(id);
+    }
     //Passes an id to the repository to delete
     internal string Delete(int id, string userId)
     {

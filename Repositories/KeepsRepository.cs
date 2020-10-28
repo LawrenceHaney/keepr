@@ -87,6 +87,14 @@ namespace Keepr.Repositories
         {keep.Creator = profile; return keep;}, new { CreatorId },
         splitOn: "id");
     }
+    internal IEnumerable<Keep> View(int Id)
+    {
+      string sql = @"
+      UPDATE keeps
+      SET views = views + 1
+      WHERE id = @Id;";
+      return _db.Query<Keep>(sql);
+    }
     //SQL call to remove a keep from the keep table
     //TODO adress if cascade delete needs to hit the VAULTKEEP object
         internal void DeleteKeep(int id)

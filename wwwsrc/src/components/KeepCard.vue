@@ -26,6 +26,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{{keepData.name}}</h5>
+        <p>Views: {{keepData.Views}}</p>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -73,6 +74,7 @@ export default {
   methods:{
     openModal(){
       this.$store.dispatch("getVaultsByUser", this.$auth.userInfo.id)
+      this.$store.dispatch("updateViews", this.keepData.id)
       $(`#${this.keepData.id}`).modal()
     },
     addToVault(id){

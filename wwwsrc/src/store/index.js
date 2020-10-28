@@ -75,7 +75,14 @@ export default new Vuex.Store({
           await api.delete("keeps/"+id)
           commit("setKeeps", [...state.keeps.filter(k=> k.id != id)])
         } catch (error) {
-          
+          console.error(error)
+        }
+      },
+      async updateViews({commit, state}, id){
+        try {
+          await api.put("keeps/"+id+"/views")
+        } catch (error) {
+          console.error(error)
         }
       },
 

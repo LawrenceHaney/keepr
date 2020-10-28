@@ -103,6 +103,19 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+
+    [HttpPut("{id}/views")]
+    public ActionResult<IEnumerable<Keep>> View(int id)
+    {
+      try
+      {
+        return Ok(_serv.View(id));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
     //on api "/keeps" delete takes in an id to be deleted
     [HttpDelete("{id}")]
     [Authorize]
