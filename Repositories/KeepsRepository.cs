@@ -50,7 +50,7 @@ namespace Keepr.Repositories
       string sql = populateCreator + "WHERE keep.id = @id";
       return _db.Query<Keep, Profile, Keep>(
         sql, (keep, profile)=> 
-        {keep.Creator = profile; return keep;}, 
+        {keep.Creator = profile; return keep;}, new { id },
         splitOn: "id").FirstOrDefault();
     }
 

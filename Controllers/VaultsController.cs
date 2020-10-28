@@ -18,10 +18,12 @@ namespace Keepr.Controllers
   {
 //creates a readonly service that can accept commands from the controller
     private readonly VaultsService _serv;
+    private readonly KeepsService _kServ;
 
-    public VaultsController(VaultsService serv)
+    public VaultsController(VaultsService serv, KeepsService kServ)
     {
       _serv=serv;
+      _kServ = kServ;
     }
 //on api "/vaults" get get all vaults
     [HttpGet]
@@ -60,6 +62,20 @@ namespace Keepr.Controllers
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         return Ok(_serv.GetByUser(userid, userInfo));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+//gets all keeps in a vault using the vault keep model
+    [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeeps(int id)
+    {
+      try
+      {
+        return Ok(_kServ.GetKeepsByVaultId(id));
       }
       catch (Exception e)
       {
