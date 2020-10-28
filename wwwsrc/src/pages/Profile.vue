@@ -2,7 +2,9 @@
   <div class="container-fluid">
     <h1>Welcome: {{profile.name}}</h1>
     <new-vault-form/>
-    <vault-card v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
+    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
+    <vault-card class="grid-item" v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
+    </div>
   </div>
 </template>
 
