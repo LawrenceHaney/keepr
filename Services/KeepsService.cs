@@ -40,6 +40,16 @@ namespace Keepr.Services
     {
       return _repo.GetKeepsByVaultId(id);
     }
+
+    internal IEnumerable<Keep> GetByUser(string id, Profile userInfo)
+    {
+      var res = _repo.GetByUser(id);
+      if (res == null)
+      {
+        throw new System.Exception("Bad id, please check your input and try again");
+      }
+      return res;
+    }
     //checks the incoming payload against the existing data before passing the payload to the repo
     internal Keep Edit(Keep payload)
     {

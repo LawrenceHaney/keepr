@@ -2,7 +2,7 @@
   <div class="home container-fluid">
     <div class="row">
     <div class="card col-10">
-    <h1 @click="openForm()">Welcome</h1>
+    <h1>Welcome</h1>
     <new-keep-form/>
     </div>
     </div>

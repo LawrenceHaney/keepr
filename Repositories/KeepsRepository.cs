@@ -77,6 +77,16 @@ namespace Keepr.Repositories
       ";
       return _db.Query<VaultKeepViewModel>(sql, new {id});
     }
+
+    //SQL call to get all user keeps
+    internal IEnumerable<Keep> GetByUser(string CreatorId)
+    {
+      string sql = populateCreator + "WHERE creatorId - @CreatorId";
+      return _db.Query<Keep, Profile, Keep>(
+        sql, (keep, profile)=> 
+        {keep.Creator = profile; return keep;}, new { CreatorId },
+        splitOn: "id");
+    }
     //SQL call to remove a keep from the keep table
     //TODO adress if cascade delete needs to hit the VAULTKEEP object
         internal void DeleteKeep(int id)

@@ -50,6 +50,20 @@ namespace Keepr.Controllers
         return BadRequest(e.Message);
       }
     }
+    [HttpGet("{userid}/user")]
+
+    public async Task<ActionResult<IEnumerable<Keep>>> GetByUser(string userid)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_serv.GetByUser(userid, userInfo));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 
     //on api "/keeps" post takes in a keep to add to the SQL database
     [HttpPost]
