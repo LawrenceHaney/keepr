@@ -4,3 +4,16 @@
   border-color: darken($color: $primary, $amount: 10);
   border-width: medium;
 }
+
+.grid-item,
+.grid-sizer {
+  width: 20%;
+}
+
+.grid-item {
+  float: left;
+  height: 100%;
+}
+
+.grid-item--width2 { width: 40%; }
+.grid-item--height2 { height: 200px; }
