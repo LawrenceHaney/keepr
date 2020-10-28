@@ -40,19 +40,6 @@ namespace Keepr.Controllers
       }
     }
 
-//NOTE this function was moved to the vaults controller to pass tests
-    // [HttpGet("{id}/keeps")]
-    // public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeeps(int id)
-    // {
-    //   try
-    //   {
-    //     return Ok(_kServ.GetKeepsByVaultId(id));
-    //   }
-    //   catch (Exception e)
-    //   {
-    //     return BadRequest(e.Message);
-    //   }
-    // }
 
     [HttpDelete("{id}")]
     [Authorize]

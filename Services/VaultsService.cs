@@ -28,10 +28,14 @@ namespace Keepr.Services
       return _repo.GetAll();
     }
 
-    internal Vault GetById(int id)
+    internal Vault GetById(int id, string userId)
     {
       var res = _repo.GetById(id);
       if (res == null)
+      {
+        throw new System.Exception("Bad id, please check your input and try again");
+      }
+      if(res.IsPrivate = true && res.CreatorId != userId)
       {
         throw new System.Exception("Bad id, please check your input and try again");
       }
@@ -49,7 +53,7 @@ namespace Keepr.Services
 //Passes an id to the repository to delete
     internal string Delete(int id, string userId)
     {
-      var res = GetById(id);
+      var res = GetById(id, userId);
       if (res.CreatorId != userId)
       {
         throw new System.Exception("Credential mismatch, please confirm you have permission to do this");

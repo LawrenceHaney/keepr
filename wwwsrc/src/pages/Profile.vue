@@ -4,16 +4,16 @@
     <h1 class="col-12 my-5">Welcome: {{profile.name}}</h1>
     <h1 class="col-3">Vaults</h1>
     <new-vault-form/>
-    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
-    <vault-card class="grid-item" v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
+    <div class="card-columns">
+    <vault-card v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
     </div>
     </div>
     <hr>
     <div class="row my-3">
     <h1 class="col-3">Keeps</h1>
     <new-keep-form/>
-    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
-      <keep-card class="grid-item" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
+    <div class="card-columns">
+      <keep-card v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
     </div>
     </div>
   </div>

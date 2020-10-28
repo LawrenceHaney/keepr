@@ -4,8 +4,8 @@
     <img class="card-img" :src="keepData.img">
     <div class="card-img-overlay row">
     <h1 class="col-12">{{keepData.name}}</h1>
-    <div class="card">
-      <img :src="keepData.creator.picture" alt="">
+    <div class="card profile-elm">
+      <img class="profile-img" :src="keepData.creator.picture" alt="">
       <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}} </router-link>
     </div>
     </div>
@@ -15,8 +15,8 @@
 
       <h1 class="col-12">{{keepData.name}}</h1>
       <div class="col-12">{{keepData.description}}</div>
-      <div class="col-6">
-      <img :src="keepData.creator.picture" alt="">
+      <div class="col-6 .profile-elm">
+      <img class="profile-img" :src="keepData.creator.picture" alt="">
       <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}} </router-link>
       </div>
     </div>

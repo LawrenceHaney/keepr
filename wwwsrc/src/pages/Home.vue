@@ -6,8 +6,8 @@
     <new-keep-form/>
     </div>
     </div>
-    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
-      <keep-card class="grid-item" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
+    <div class="card-columns">
+      <keep-card calss="card" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
   },
   mounted(){
     this.$store.dispatch("getKeeps")
+
   },
   components:{
     newKeepForm,

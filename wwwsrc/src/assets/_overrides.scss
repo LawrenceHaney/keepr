@@ -5,15 +5,12 @@
   border-width: medium;
 }
 
-.grid-item,
-.grid-sizer {
-  width: 20%;
+.profile-elm{
+  max-height: 15vh;
+  max-width: 25%;
 }
 
-.grid-item {
-  float: left;
-  height: 100%;
+.profile-img{
+  border-radius: 50%;
+  object-fit: fill;
 }
-
-.grid-item--width2 { width: 40%; }
-.grid-item--height2 { height: 200px; }
