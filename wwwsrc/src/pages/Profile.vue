@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row my-3">
-    <h1 class="col-12 my-5">Welcome: {{profile.name}}</h1>
+    <h1 class="col-12 my-5"><span v-if="this.$auth.userInfo.Id == this.$route.params.id">Welcome: </span>{{profile.name}}</h1>
     <h1 class="col-3">Vaults</h1>
     <new-vault-form/>
     <div class="card-columns">
@@ -29,7 +29,7 @@ name:"Profile",
 mounted(){
   this.$store.dispatch("getProfileById", this.$route.params.id)
   this.$store.dispatch("getVaultsByUser", this.$route.params.id)
-  this.$store.dispatch("getKeepsbyUser", this.$route.params.id)
+  this.$store.dispatch("getKeepsByUser", this.$route.params.id)
 },
 computed:{
   profile(){

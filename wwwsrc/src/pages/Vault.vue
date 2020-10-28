@@ -4,8 +4,8 @@
       <h1 class="col-12">{{vault.name}}</h1>
       <h6 class="col-12">{{vault.description}}</h6>
     </div>
-    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "fitRows" }'>
-      <keep-card class="grid-item" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
+    <div class="card-columns">
+      <keep-card v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
     </div>
   </div>
 </template>
