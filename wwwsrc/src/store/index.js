@@ -61,6 +61,14 @@ export default new Vuex.Store({
           console.error(error)
         }
       },
+      async deleteKeep({commit, state}, id){
+        try {
+          await api.delete("keeps/"+id)
+          commit("setKeeps", [...state.keeps.filter(k=> k.id != id)])
+        } catch (error) {
+          
+        }
+      },
 
       async addToVault({commit, state}, newVaultKeep){
         try {
