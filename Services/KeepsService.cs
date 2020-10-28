@@ -40,7 +40,19 @@ namespace Keepr.Services
     {
       return _repo.GetKeepsByVaultId(id);
     }
-    
+    //checks the incoming payload against the existing data before passing the payload to the repo
+    internal Keep Edit(Keep payload)
+    {
+      var data = GetById(payload.Id);
+      if (data.CreatorId != payload.CreatorId)
+      {
+        throw new System.Exception("Cant let you do that dave");
+      }
+      payload.Description = payload.Description != null ? payload.Description : data.Description;
+      payload.Name = payload.Name != null && payload.Name.Length > 3 ? payload.Name : data.Name;
+      payload.Views = payload.Views != 0 && payload.Views < data.Views ? payload.Views : data.Views;
+      return _repo.Edit(payload);
+    }
     //Passes an id to the repository to delete
     internal string Delete(int id, string userId)
     {

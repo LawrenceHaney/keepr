@@ -72,6 +72,23 @@ namespace Keepr.Controllers
       }
     }
 
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<ActionResult<Keep>> Edit([FromBody] Keep payload, int id)
+    {
+      try
+      {
+        Profile user = await HttpContext.GetUserInfoAsync<Profile>();
+        payload.CreatorId = user.Id;
+        payload.Creator = user;
+        payload.Id = id;
+        return Ok(_serv.Edit(payload));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
     //on api "/keeps" delete takes in an id to be deleted
     [HttpDelete("{id}")]
     [Authorize]

@@ -54,6 +54,18 @@ namespace Keepr.Repositories
         splitOn: "id").FirstOrDefault();
     }
 
+    //SQL call that edits a keep given a new keep and an id
+    internal Keep Edit(Keep payload)
+    {
+      string sql = @"
+      UPDATE keeps
+      SET
+      name = @Name, description = @Description, img = @Img, views = @Views, shares = @Shares, keeps = @Keeps
+      WHERE id = @Id;";
+      _db.Execute(sql, payload);
+      return payload;
+    }
+
     //SQL call that gets all keeps in a vault
     internal IEnumerable<VaultKeepViewModel> GetKeepsByVaultId(int id)
     {
