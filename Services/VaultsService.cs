@@ -35,7 +35,7 @@ namespace Keepr.Services
       {
         throw new System.Exception("Bad id, please check your input and try again");
       }
-      if(res.IsPrivate = true && res.CreatorId != userId)
+      if(res.CreatorId != userId && res.IsPrivate == false)
       {
         throw new System.Exception("Bad id, please check your input and try again");
       }
