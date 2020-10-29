@@ -29,7 +29,7 @@ namespace Keepr.Repositories
     {
       string sql = @"
       SELECT
-      vaultkeep.*,
+      vaultkeep.*
       From vaultkeeps vaultkeep
       WHERE vaultkeep.id = @id
       ";
@@ -41,6 +41,7 @@ namespace Keepr.Repositories
       string sql = "DELETE FROM vaultkeeps WHERE id = @id";
       _db.Execute(sql, new {id});
     }
+
 
   }
 }

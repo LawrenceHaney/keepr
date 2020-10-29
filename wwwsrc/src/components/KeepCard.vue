@@ -47,7 +47,12 @@
         <div class="row">
           <div class="col-12">
 
-        <div class="close" v-if="this.$auth.userInfo.id == this.keepData.creator.id">
+        <div class="close"  v-if='this.$route.name == "Vault"' >
+          <small>remove</small>
+          <i class="fa fa-minus-square" @click="removeFromVault()" aria-hidden="true"></i>
+        </div>
+        <div class="close">
+          <small>delete</small>
           <i class="fa fa-trash" @click="deleteKeep(keepData.id)" aria-hidden="true"></i>
         </div>
         <p class="text-center">{{keepData.description}}</p>
@@ -116,7 +121,16 @@ export default {
       else
       {
         this.$store.dispatch("deleteKeep", id)
+        $(`#${this.keepData.id}`).modal('hide')
       }
+    },
+    removeFromVault(){
+      let res = confirm("can't undo this are you sure?")
+      if (res== true)
+        {
+          this.$store.dispatch("deleteKeepFromVault", this.keepData.vaultKeepId)
+          $(`#${this.keepData.id}`).modal('hide')
+        }
     }
   }
 

@@ -23,7 +23,7 @@ export default {
   },
   mounted(){
   this.$store.dispatch("getKeepsbyVaultIdCard", this.vaultData.id)
-  $('.carousel').carousel()
+  setTimeout(($('.carousel').carousel()), 1000)
 },
 
 components:{
