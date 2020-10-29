@@ -48,6 +48,9 @@ namespace Keepr.Services
       {
         throw new System.Exception("Bad id, please check your input and try again");
       }
+      if (userInfo == null){
+      return res.ToList().FindAll(Vault => !Vault.IsPrivate);
+      }
       return res.ToList().FindAll(Vault => Vault.CreatorId == userInfo.Id || !Vault.IsPrivate);
     }
 //Passes an id to the repository to delete

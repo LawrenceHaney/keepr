@@ -105,7 +105,7 @@ namespace Keepr.Controllers
     }
 
     [HttpPut("{id}/views")]
-    public ActionResult<IEnumerable<Keep>> View(int id)
+    public ActionResult<Keep> View(int id)
     {
       try
       {

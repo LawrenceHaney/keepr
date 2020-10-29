@@ -17,7 +17,8 @@
       <div class="col-12">{{keepData.description}}</div>
       <div class="col-6 .profile-elm">
       <img class="profile-img" :src="keepData.creator.picture" alt="">
-      <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}} </router-link>
+      <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}}
+      </router-link>
       </div>
     </div>
     </span>
@@ -26,7 +27,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{{keepData.name}}</h5>
-        <p>Views: {{keepData.Views}}</p>
+        <p>Views: {{keepData.views}}</p>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -73,6 +74,7 @@ export default {
   },
   methods:{
     openModal(){
+      this.keepData.views ++
       this.$store.dispatch("getVaultsByUser", this.$auth.userInfo.id)
       this.$store.dispatch("updateViews", this.keepData.id)
       $(`#${this.keepData.id}`).modal()
