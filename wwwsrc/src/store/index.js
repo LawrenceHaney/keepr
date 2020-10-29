@@ -10,6 +10,7 @@ export default new Vuex.Store({
     keeps: [],
     focus: {},
     vaults: [],
+    dict: {},
   },
   mutations: {
     setProfile(state, profile) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     setVaults(state, vaults){
       state.vaults = vaults
+    },
+    setDict(state, payload){
+      state.dict = payload
     }
   },
   actions: {
@@ -98,6 +102,17 @@ export default new Vuex.Store({
         try {
           let res = await api.get("vaults/" +id+ "/keeps")
           commit("setKeeps", res.data)
+        } catch (error) {
+          console.error(error)
+        }
+      },
+      async getKeepsbyVaultIdCard({commit, state}, id){
+        try {
+          let res = await api.get("vaults/" +id+ "/keeps")
+          let payload = state.dict
+          payload[id] = res.data
+          console.log(payload);
+          commit("setDict", payload)
         } catch (error) {
           console.error(error)
         }

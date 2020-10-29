@@ -12,13 +12,14 @@ namespace Keepr.Services
       _repo = repo;
     }
 
-    internal void Create(VaultKeep newVaultKeep, string id)
+    internal VaultKeep Create(VaultKeep newVaultKeep, string id)
     {
       if (newVaultKeep.CreatorId != id)
       {
         throw new System.Exception("can't add keeps to other peoples vaults");
       }
       _repo.Create(newVaultKeep);
+      return newVaultKeep; 
       
     }
 

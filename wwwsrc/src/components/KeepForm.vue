@@ -39,6 +39,7 @@ export default {
   methods: {
     createKeep(){
       this.$store.dispatch("createKeep", this.newKeep)
+      $('#KeepForm').modal('hide')
     },
     openForm(){
       $(`#KeepForm`).modal()

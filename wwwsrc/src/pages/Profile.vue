@@ -7,7 +7,7 @@
     {{vaults.length}}
     <new-vault-form/>
     </h1>
-    <div class="card-columns">
+    <div class="card-columns m-1">
     <vault-card v-for="vault in vaults" :key="vault.id" :vaultData="vault" />
     </div>
     </div>
@@ -16,7 +16,7 @@
     <h1 class="col-3">Keeps: {{keeps.length}}
     <new-keep-form/>
     </h1>
-    <div class="card-columns">
+    <div class="card-columns px-3">
       <keep-card v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
     </div>
     </div>

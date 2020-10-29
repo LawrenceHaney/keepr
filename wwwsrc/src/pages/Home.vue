@@ -5,7 +5,7 @@
     <new-keep-form />
     </h1>
     </div>
-    <div class="card-columns">
+    <div class="card-columns m-1">
       <keep-card calss="card" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
     </div>
   </div>

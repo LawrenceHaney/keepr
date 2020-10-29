@@ -36,6 +36,7 @@ export default {
   methods: {
     createVault(){
       this.$store.dispatch("createVault", this.newVault)
+      $('#VaultForm').modal('hide')
     },
     openForm(){
       $(`#VaultForm`).modal()

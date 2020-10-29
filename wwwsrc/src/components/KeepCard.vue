@@ -7,7 +7,7 @@
     <div class="row justify-content-between">
     <h1 class="p-4 img-title">{{keepData.name}}</h1>
     <div class="profile-elm">
-      <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }">
+      <router-link @click="$(`#${this.keepData.id}`).modal('hide')" :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }">
       <img class="profile-img p-1" :src="keepData.creator.picture" alt="">
       </router-link>
     </div>
@@ -21,7 +21,7 @@
       <div class="col-12">{{keepData.description}}</div>
       <div class="col-6 .profile-elm">
       <img class="profile-img" :src="keepData.creator.picture" alt="">
-      <router-link :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}}
+      <router-link @click="$(`#${this.keepData.id}`).modal('hide')" :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}}
       </router-link>
       </div>
     </div>
