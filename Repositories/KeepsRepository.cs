@@ -81,7 +81,7 @@ namespace Keepr.Repositories
     //SQL call to get all user keeps
     internal IEnumerable<Keep> GetByUser(string CreatorId)
     {
-      string sql = populateCreator + "WHERE creatorId - @CreatorId";
+      string sql = populateCreator + "WHERE creatorId = @CreatorId";
       return _db.Query<Keep, Profile, Keep>(
         sql, (keep, profile)=> 
         {keep.Creator = profile; return keep;}, new { CreatorId },

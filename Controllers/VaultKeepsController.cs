@@ -16,23 +16,27 @@ namespace Keepr.Controllers
   {
     private readonly VaultKeepsService _serv;
     private readonly KeepsService _kServ;
+    private readonly VaultsService _vserv;
 
-    public VaultKeepsController(VaultKeepsService serv, KeepsService kServ)
+    public VaultKeepsController(VaultKeepsService serv, KeepsService kServ, VaultsService vServ)
     {
       _serv = serv;
       _kServ = kServ;
+      _vserv = vServ;
     }
 
     [HttpPost]
     [Authorize]
 
-    public async Task<ActionResult<VaultKeep>> Create([FromBody] VaultKeep newVaultKeep)
+    public async Task<ActionResult<String>> Create([FromBody] VaultKeep newVaultKeep)
     {
       try
       {
         Profile userinfo = await HttpContext.GetUserInfoAsync<Profile>();
+        Vault vault = _vserv.GetById(newVaultKeep.VaultId, userinfo.Id);
         newVaultKeep.CreatorId = userinfo.Id;
-        return Ok(_serv.Create(newVaultKeep));
+        _serv.Create(newVaultKeep, vault.CreatorId);
+        return Ok("done");
       }
       catch (Exception e)
       {

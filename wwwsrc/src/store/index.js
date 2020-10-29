@@ -57,7 +57,7 @@ export default new Vuex.Store({
       async getKeepsByUser({commit}, user){
         try {
           let res = await api.get("keeps/" +user+"/user" )
-          commit("setKeeps", res)
+          commit("setKeeps", res.data)
         } catch (error) {
           console.error(error)
         }
@@ -128,7 +128,15 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error)
       }
+      },
+
+      async deleteVault({commit}, id){
+      try {
+        let res= await api.delete("vaults/" + id)
+      } catch (error) {
+        console.error(error)
       }
+    }
     }
   }
 );

@@ -1,10 +1,9 @@
 <template>
   <div class="home container-fluid">
     <div class="row">
-    <div class="card col-10">
-    <h1>Welcome</h1>
-    <new-keep-form/>
-    </div>
+    <h1 class="m-4">Keeps
+    <new-keep-form />
+    </h1>
     </div>
     <div class="card-columns">
       <keep-card calss="card" v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>

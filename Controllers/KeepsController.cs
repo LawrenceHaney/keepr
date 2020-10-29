@@ -75,9 +75,9 @@ namespace Keepr.Controllers
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         newKeep.CreatorId = userInfo.Id;
         newKeep.Creator = userInfo;
-        newKeep.Views = 0;
-        newKeep.Shares = 0;
-        newKeep.Keeps = 0;
+        newKeep.Views = 1;
+        newKeep.Shares = 1;
+        newKeep.Keeps = 1;
         return Ok(_serv.Create(newKeep));
       }
       catch (Exception e)

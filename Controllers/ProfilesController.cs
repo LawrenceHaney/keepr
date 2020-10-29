@@ -14,9 +14,14 @@ namespace Keepr.Controllers
   public class ProfilesController : ControllerBase
   {
     private readonly ProfilesService _ps;
-    public ProfilesController(ProfilesService ps)
+    private readonly KeepsService _kserv;
+
+    private readonly VaultsService _vserv;
+    public ProfilesController(ProfilesService ps, KeepsService kserv, VaultsService vserv)
     {
       _ps = ps;
+      _kserv = kserv;
+      _vserv = vserv;
     }
 
 
@@ -49,5 +54,36 @@ namespace Keepr.Controllers
       }
     
     }
+
+    [HttpGet("{userid}/keeps")]
+    
+    public async Task<ActionResult<IEnumerable<Keep>>> GetKeepsByUser(string userid)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_kserv.GetByUser(userid, userInfo));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{userid}/vaults")]
+
+    public async Task<ActionResult<IEnumerable<Vault>>> GetVaultsByUser(string userid)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_vserv.GetByUser(userid, userInfo));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+    
   }
 }

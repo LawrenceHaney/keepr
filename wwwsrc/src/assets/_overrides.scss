@@ -12,5 +12,20 @@
 
 .profile-img{
   border-radius: 50%;
-  object-fit: fill;
+  object-fit: scale-down;
+  max-height: 10vh;
+}
+
+
+.img-title{
+  color: var(--light);
+  text-shadow: .05em .05em .02em var(--dark);
+}
+
+.keep-card{
+  border-radius: 2%;
+}
+
+.card-img{
+  border-radius: 2%;
 }

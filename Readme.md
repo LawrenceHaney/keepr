@@ -66,37 +66,37 @@ You have been provided the following Figma to provide you the general layout. Wh
 
 # Requirements
 
-- Visitors can see all `keep`s (login not required)
-- `Keep` cards are displayed in accordance to mock
-	- A `keep` card includes image, title, creator avatar
+<!-- - Visitors can see all `keep`s (login not required) -->
+<!-- - `Keep` cards are displayed in accordance to mock -->
+	<!-- - A `keep` card includes image, title, creator avatar -->
 	- Clicking on the creator avatar navigates to the creators profile page *(stop propagate)*
-- Cards follow a mansonry layout *(bootstrap card columns OR masonry)*
-- Clicking on a `keep` card opens the `keep` in a modal which adheres to mock
+<!-- - Cards follow a mansonry layout *(bootstrap card columns OR masonry)* -->
+<!-- - Clicking on a `keep` card opens the `keep` in a modal which adheres to mock
 	- Keep Count
 	- View Count
 	- Keep Description
 	- Keep Title
 	- Keep Creator name and avatar
 	- Keep Image
-	- Add to vault functionality
-- All users have a public profile page
+	- Add to vault functionality -->
+<!-- - All users have a public profile page
 - The profile page adheres to mock:
 	- **Public** vaults
-	- **Private** vaults if it is their own page
-	- Keeps created by that user
-	- Total `keep`s count
-	- Total public `vault`s count
-	- The users name and avatar
-- Each `vault` has its own route where users can view all of the `keeps` in the vault
+	- **Private** vaults if it is their own page -->
+	<!--  Keeps created by that user -->
+	<!--  Total `keep`s count -->
+	<!--  Total public `vault`s count -->
+	<!-- - The users name and avatar -->
+<!-- - Each `vault` has its own route where users can view all of the `keeps` in the vault -->
 - On the `vault` page, if the `vault` is private and not the active users the request fails
 - From the `vault` page if the user is the creator they can remove `keep`s from the `vault`
 - Anytime a `keep` is `kept in a vault` the keep count is incremented
-- Users can Register, login and automatically authenticated on refresh
-- Create and Delete Keeps
+<!-- - Users can Register, login and automatically authenticated on refresh -->
+<!-- - Create and Delete Keeps -->
 - Create and Delete Vaults
 - Users can only Delete **things they created**
 - All deletes require confirmation
-- Add `keeps` to `vault`s
+<!-- - Add `keeps` to `vault`s -->
 - Remove `keeps` from `vault`s
 - All API Tests pass
 

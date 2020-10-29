@@ -22,7 +22,7 @@ namespace Keepr.Repositories
       VALUES
       (@creatorId, @vaultId, @keepId)
       ";
-      return _db.ExecuteScalar<int>(sql, newVaultKeep);
+      return _db.Execute(sql, newVaultKeep);
     }
 
     internal VaultKeep GetById(int id)

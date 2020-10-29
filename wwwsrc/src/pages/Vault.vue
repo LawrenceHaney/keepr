@@ -1,8 +1,13 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+      
       <h1 class="col-12">{{vault.name}}</h1>
-      <h6 class="col-12">{{vault.description}}</h6>
+      <h6 class="col-12">{{vault.description}} 
+        <div class="close" v-if="this.$auth.userInfo.id == this.vault.creator.id">
+          <i class="fa fa-trash" @click="deleteVault(vault.id)" aria-hidden="true"></i>
+        </div>
+      </h6>
     </div>
     <div class="card-columns">
       <keep-card v-for="keep in keeps" :key= "keep.id" :keepData="keep"/>
@@ -28,7 +33,17 @@ computed:{
 },
 components:{
     keepCard
+}, 
+methods: {
+  deleteVault(id){
+    console.log(id);
+    let res = confirm("can't undo this, are you sure?")
+      if(res == true)
+      this.$store.dispatch("deleteVault", id)
+      this.$router.push({ name: "Home" })
+  }
 }
+
 }
 </script>
 
