@@ -3,7 +3,7 @@
 <i class="fa fa-plus-square" aria-hidden="true" @click="openForm"></i>
 <div class="modal fade" id="VaultForm" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-primary">
       <div class="modal-header">
         <h5 class="modal-title">Create a new Vault</h5>
   </div>
@@ -16,7 +16,7 @@
       <label for="Privacy">Private</label>
       <input type="checkbox" class="m-1" v-model="newVault.IsPrivate" aria-label="Checkbox for following text input">
       <hr>
-      <button type="submit" class="btn btn-outline-primary">GO!</button>
+      <button type="submit" class="btn btn-outline-dark">Create Vault</button>
     </form>
   </div>
 </div>

@@ -1,5 +1,5 @@
 <template>
-  <div @click="this.openModal" class="card keep-card m-3 p-1">
+  <div @click="this.openModal" class="card keep-card m-3 p-1 bg-secondary">
     <span v-if="keepData.img">
     <img class="card-img" :src="keepData.img">
     <div class="card-img-overlay d-flex flex-column justify-content-between">
@@ -28,7 +28,7 @@
     </span>
   <div class="modal fade" :id="keepData.id" tabindex="-1">
   <div class="modal-dialog">
-    <div class="modal-content container-fluid">
+    <div class="modal-content container-fluid bg-secondary">
       <div class="modal-header">
         <div class="d-flex flex-column">
         <h5 class="modal-title">{{keepData.name}}</h5>
@@ -61,10 +61,10 @@
         <div class="row">
       <div class="col-6">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Add to Vault
           </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu bg-primary img-title drop-scroll" aria-labelledby="dropdownMenuButton">
             <a v-for="vault in vaults" :key="vault.id" class="dropdown-item" @click.prevent="addToVault(vault.id)" >{{vault.name}}</a>
             </div>
         </div>

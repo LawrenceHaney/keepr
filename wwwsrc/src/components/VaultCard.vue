@@ -1,7 +1,7 @@
 <template>
-  <div class="card col">
+  <div class="card col bg-primary">
     <router-link :to="{ name: 'Vault', params: {id: this.vaultData.id} }">
-    <h1 class="card-title">{{vaultData.name}}</h1>
+    <h1 class="card-title img-title">{{vaultData.name}}</h1>
     </router-link>
     <div :id="vaultData.id" class="carousel slide">
       <div class="carousel-inner">

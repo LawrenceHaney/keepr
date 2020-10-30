@@ -4,7 +4,14 @@
   border-color: darken($color: $primary, $amount: 10);
   border-width: medium;
 }
-
+.background{
+  background-image: url("https://images.unsplash.com/photo-1530005650741-08aa02c24ff8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1835&q=80");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-grow: 1;
+}
 .profile-elm{
   max-height: 15vh;
   max-width: 25%;
@@ -28,4 +35,17 @@
 
 .card-img{
   border-radius: 2%;
+}
+
+.drop-scroll{
+  max-height: 25vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.drop-scroll::-webkit-scrollbar {
+  display: none;
+}
+.navtext{
+  color: var(--danger);
+  text-shadow: .025em .025em .01em var(--warning)
 }

@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <h1 class="border border-primary">K</h1>
+      <div class="d-flex flex-column align-items-center text-center">
+        <h1 class="border border-warning px-3 navtext">K</h1>
       </div>
     </router-link>
-    <router-link v-if="$auth.isAuthenticated" class="navbar-brand d-flex" :to="{ name: 'Profile', params:{id: this.$store.state.profile.id} }">
+    <router-link v-if="$auth.isAuthenticated" class="navbar-brand d-flex navtext" :to="{ name: 'Profile', params:{id: this.$store.state.profile.id} }">
       <div class="d-flex flex-column align-items-center">
         <h1 class="">Profile</h1>
       </div>
@@ -21,7 +21,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse justify-right" id="navbarText">
       <span class="navbar-text">
         <!-- Consider changing this to a profile picture -->
         <button

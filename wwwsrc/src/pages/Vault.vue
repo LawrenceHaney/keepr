@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <h1 class="col-12">{{vault.name}}</h1>
-      <h6 class="col-12">{{vault.description}} 
+      <h1 class="col-12 img-title">{{vault.name}}</h1>
+      <h6 class="col-12 img-title">{{vault.description}} 
         <div class="close">
-          <i class="fa fa-trash" @click="deleteVault(vault.id)" aria-hidden="true"></i>
+          <i class="fa fa-trash img-title" @click="deleteVault(vault.id)" aria-hidden="true"></i>
         </div>
       </h6>
     </div>

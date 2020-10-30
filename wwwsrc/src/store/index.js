@@ -49,9 +49,7 @@ export default new Vuex.Store({
     async getKeeps({commit}) {
         try {
           let res = await api.get("keeps");
-          console.log(res);
           commit("setKeeps", res.data)
-          console.log(this.state.keeps);
         } 
         catch (error) {
           console.error(error)
@@ -111,7 +109,6 @@ export default new Vuex.Store({
           let res = await api.get("vaults/" +id+ "/keeps")
           let payload = state.dict
           payload[id] = res.data
-          console.log(payload);
           commit("setDict", payload)
         } catch (error) {
           console.error(error)

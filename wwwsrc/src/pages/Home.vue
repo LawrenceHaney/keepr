@@ -1,7 +1,7 @@
 <template>
   <div class="home container-fluid">
     <div class="row">
-    <h1 class="m-4">Keeps
+    <h1 class="m-4 img-title">Keeps
     <new-keep-form />
     </h1>
     </div>

@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row my-3">
     <img class="p-2" :src="profile.picture" alt="">
-    <h1 class="col-12 mb-5"><span v-if="this.$auth.userInfo.Id == this.$route.params.id">Welcome: </span>{{profile.name}}</h1>
-    <h1 class="col-3">Vaults:
+    <h1 class="col-12 mb-5 img-title"><span v-if="this.$auth.userInfo.Id == this.$route.params.id">Welcome: </span>{{profile.name}}</h1>
+    <h1 class="col-3 img-title">Vaults:
     {{vaults.length}}
     <new-vault-form/>
     </h1>
@@ -13,7 +13,7 @@
     </div>
     <hr>
     <div class="row my-3">
-    <h1 class="col-3">Keeps: {{keeps.length}}
+    <h1 class="col-3 img-title">Keeps: {{keeps.length}}
     <new-keep-form/>
     </h1>
     <div class="card-columns px-3">
