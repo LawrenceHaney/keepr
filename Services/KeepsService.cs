@@ -64,7 +64,7 @@ namespace Keepr.Services
       return _repo.Edit(payload);
     }
 
-    internal Keep View(int id)
+    internal int View(int id)
     {
       return _repo.View(id);
     }

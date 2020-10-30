@@ -7,9 +7,9 @@
     <div class="row justify-content-between">
     <h1 class="p-4 img-title">{{keepData.name}}</h1>
     <div class="profile-elm">
-      <router-link @click="$(`#${this.keepData.id}`).modal('hide')" :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }">
+      <div v-on:click.stop="gotoprofile">
       <img class="profile-img p-1" :src="keepData.creator.picture" alt="">
-      </router-link>
+      </div>
     </div>
     </div>
     </div>
@@ -20,9 +20,9 @@
       <h1 class="col-12">{{keepData.name}}</h1>
       <div class="col-12">{{keepData.description}}</div>
       <div class="col-6 .profile-elm">
+      <div v-on:click.stop="gotoprofile"> 
       <img class="profile-img" :src="keepData.creator.picture" alt="">
-      <router-link @click="$(`#${this.keepData.id}`).modal('hide')" :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> {{keepData.creator.name}}
-      </router-link>
+      </div>
       </div>
     </div>
     </span>
@@ -70,10 +70,10 @@
         </div>
         </div>
         <div class="col-4">
-        <router-link class="" :to="{ name: 'Profile', params: {id: this.keepData.creator.id} }"> 
+        <div class="" v-on:click.stop="gotoprofile"> 
         <img class="profile-img" :src="keepData.creator.picture" alt="">
           {{keepData.creator.name}}
-        </router-link>
+        </div>
       </div>
       </div>
       </div>
@@ -103,6 +103,10 @@ export default {
     }
   },
   methods:{
+    gotoprofile(){
+      $(`#${this.keepData.id}`).modal('hide')
+      this.$router.push({ name: 'Profile', params: {id: this.keepData.creator.id} })
+    },
     openModal(){
       this.keepData.views ++
       this.$store.dispatch("getVaultsByUser", this.$auth.userInfo.id)

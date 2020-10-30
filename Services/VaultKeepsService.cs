@@ -6,10 +6,12 @@ namespace Keepr.Services
   public class VaultKeepsService
   {
     private readonly VaultKeepsRepository _repo;
+    private readonly KeepsRepository _krepo;
     
-    public VaultKeepsService(VaultKeepsRepository repo)
+    public VaultKeepsService(VaultKeepsRepository repo, KeepsRepository krepo)
     {
       _repo = repo;
+      _krepo = krepo;
     }
 
     internal VaultKeep Create(VaultKeep newVaultKeep, string id)
@@ -19,6 +21,7 @@ namespace Keepr.Services
         throw new System.Exception("can't add keeps to other peoples vaults");
       }
       _repo.Create(newVaultKeep);
+      _krepo.KeepInc(newVaultKeep.KeepId);
       return newVaultKeep; 
       
     }
