@@ -46,20 +46,18 @@
       <div class="col-6 d-flex flex-column justify-content-between">
         <div class="row">
           <div class="col-12">
-
-        <div class="close"  v-if='this.$route.name == "Vault"' >
-          <small>remove</small>
-          <i class="fa fa-minus-square" @click="removeFromVault()" aria-hidden="true"></i>
-        </div>
-        <div class="close">
-          <small>delete</small>
-          <i class="fa fa-trash" @click="deleteKeep(keepData.id)" aria-hidden="true"></i>
-        </div>
         <p class="text-center">{{keepData.description}}</p>
         </div>
         </div>
         <div class="row">
-      <div class="col-6">
+      
+        <div class="col-12">
+        <div class="" v-on:click.stop="gotoprofile"> 
+        <img class="profile-img" :src="keepData.creator.picture" alt="">
+          {{keepData.creator.name}}
+        </div>
+      </div>
+      <div class="col-12 mt-2">
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Add to Vault
@@ -69,17 +67,19 @@
             </div>
         </div>
         </div>
-        <div class="col-4">
-        <div class="" v-on:click.stop="gotoprofile"> 
-        <img class="profile-img" :src="keepData.creator.picture" alt="">
-          {{keepData.creator.name}}
-        </div>
-      </div>
       </div>
       </div>
       </div>
       </div>
       <div class="modal-footer justify-content-between">
+        <div class="text-center">
+          <small class="mx-2">delete</small>
+          <i class="fa fa-trash" @click="deleteKeep(keepData.id)" aria-hidden="true"></i>
+          <div  v-if='this.$route.name == "Vault"' >
+          <small class="mx-2">remove</small>
+          <i class="fa fa-minus-square" @click="removeFromVault()" aria-hidden="true"></i>
+        </div>
+        </div>
       </div>
     </div>
   </div>
@@ -120,13 +120,14 @@ export default {
       $(`#${this.keepData.id}`).modal('hide')
     },
     deleteKeep(id){
+      if(this.$auth.userInfo.id == this.keepData.creatorId){
+
       let res = confirm("can't undo this, are you sure?")
-      if(res == false)
-        {return}
-      else
-      {
+      if(res == true){
         this.$store.dispatch("deleteKeep", id)
         $(`#${this.keepData.id}`).modal('hide')
+      }
+      }
       }
     },
     removeFromVault(){
@@ -137,7 +138,7 @@ export default {
           $(`#${this.keepData.id}`).modal('hide')
         }
     }
-  }
+  
 
 }
 </script>

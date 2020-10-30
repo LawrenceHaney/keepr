@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'Vault', params: {id: this.vaultData.id} }">
     <h1 class="card-title img-title">{{vaultData.name}}</h1>
     </router-link>
-    <div :id="vaultData.id" class="carousel slide">
+    <div :id='vaultData.id - card' class="carousel slide">
       <div class="carousel-inner">
         <inner-vault v-for="(keep, index) in keeps[this.vaultData.id]" :key= "keep.id" :keepData="keep" :index="index"/>
     </div>
@@ -23,7 +23,7 @@ export default {
   },
   mounted(){
   this.$store.dispatch("getKeepsbyVaultIdCard", this.vaultData.id)
-  setTimeout(($('.carousel').carousel()), 1000)
+  setTimeout($('.carousel').carousel(), 1000)
 },
 
 components:{
