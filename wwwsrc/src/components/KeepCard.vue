@@ -117,6 +117,7 @@ export default {
       this.newVaultKeep.keepId = this.keepData.id
       this.newVaultKeep.vaultId = id
       this.$store.dispatch("addToVault", this.newVaultKeep)
+      $(`#${this.keepData.id}`).modal('hide')
     },
     deleteKeep(id){
       let res = confirm("can't undo this, are you sure?")
